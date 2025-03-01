@@ -1,0 +1,222 @@
+.smart-reminders {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.reminders-button {
+  background: linear-gradient(135deg, var(--kawaii-pink), var(--kawaii-purple));
+  color: white;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.reminders-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.reminders-icon {
+  font-size: 1.3rem;
+  animation: pulse 2s infinite;
+}
+
+.reminders-panel {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  background-color: white;
+  border-radius: 18px;
+  width: 320px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--kawaii-purple);
+  animation: slide-up 0.3s ease-out;
+  z-index: 200;
+}
+
+.reminders-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--kawaii-purple);
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.reminders-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, var(--kawaii-pink), var(--kawaii-purple));
+  border-radius: 3px;
+}
+
+.reminders-description {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.suggestion-item {
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+  background-color: var(--bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item.high {
+  border-left: 5px solid #ff7a7a;
+}
+
+.suggestion-item.medium {
+  border-left: 5px solid #ffb347;
+}
+
+.suggestion-item.low {
+  border-left: 5px solid #6eb5ff;
+}
+
+.suggestion-emoji {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: float 3s ease-in-out infinite;
+}
+
+.suggestion-content {
+  flex: 1;
+}
+
+.suggestion-task {
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.suggestion-message {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.no-suggestions {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-light);
+  font-style: italic;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.close-reminders {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+}
+
+.close-reminders:hover {
+  background-color: var(--kawaii-purple);
+  color: white;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 600px) {
+  .smart-reminders {
+    bottom: 15px;
+    left: 15px;
+  }
+  
+  .reminders-panel {
+    width: 90vw;
+    max-width: 320px;
+  }
+  
+  .reminders-button {
+    padding: 8px 15px;
+  }
+  
+  .reminders-text {
+    font-size: 0.9rem;
+  }
+} 

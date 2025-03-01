@@ -1,0 +1,39 @@
+.todo-export-import {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.export-button, .import-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.export-button {
+  background-color: #9c88ff;
+  color: white;
+}
+
+.export-button:hover {
+  background-color: #8c78ef;
+}
+
+.import-button {
+  background-color: #74b9ff;
+  color: white;
+}
+
+.import-button:hover {
+  background-color: #64a9ef;
+}
+
+.import-input {
+  display: none;
+} 

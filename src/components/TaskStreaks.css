@@ -1,0 +1,294 @@
+.task-streaks {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.streak-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 8px 16px;
+  border: 2px solid var(--kawaii-yellow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.streak-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.streak-button.animate {
+  animation: streak-grow 0.5s ease, streak-glow 2s infinite alternate;
+}
+
+.streak-button.none {
+  border-color: var(--border-color);
+}
+
+.streak-button.starting {
+  border-color: var(--kawaii-yellow);
+  background-color: rgba(var(--kawaii-yellow-rgb), 0.05);
+}
+
+.streak-button.good {
+  border-color: #ffb347;
+  background-color: rgba(255, 179, 71, 0.05);
+}
+
+.streak-button.great {
+  border-color: #ff7f50;
+  background-color: rgba(255, 127, 80, 0.05);
+}
+
+.streak-button.amazing {
+  border-color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.05);
+}
+
+.streak-button.legendary {
+  border-color: #ff4500;
+  background: linear-gradient(45deg, rgba(255, 69, 0, 0.05), rgba(255, 215, 0, 0.1));
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+}
+
+.streak-emoji {
+  font-size: 1.2rem;
+}
+
+.streak-count {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.streak-panel {
+  position: absolute;
+  bottom: 110px;
+  left: 0;
+  background-color: white;
+  border-radius: 18px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--kawaii-yellow);
+  animation: slide-up 0.3s ease-out;
+  z-index: 200;
+}
+
+.streak-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.streak-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, var(--kawaii-yellow), #ff7f50);
+  border-radius: 3px;
+}
+
+.streak-meter {
+  height: 12px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.streak-meter-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.streak-meter-fill.none {
+  width: 0% !important;
+  background-color: var(--border-color);
+}
+
+.streak-meter-fill.starting {
+  background: linear-gradient(to right, var(--kawaii-yellow), #ffb347);
+}
+
+.streak-meter-fill.good {
+  background: linear-gradient(to right, #ffb347, #ff7f50);
+}
+
+.streak-meter-fill.great {
+  background: linear-gradient(to right, #ff7f50, #ff6b6b);
+}
+
+.streak-meter-fill.amazing {
+  background: linear-gradient(to right, #ff6b6b, #ff4500);
+}
+
+.streak-meter-fill.legendary {
+  background: linear-gradient(to right, #ff4500, #ffd700);
+  animation: shimmer 2s infinite;
+}
+
+.streak-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.streak-message {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-color);
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+}
+
+.streak-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.streak-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+}
+
+.streak-stat:nth-child(1),
+.streak-stat:nth-child(2) {
+  flex: 1;
+  min-width: calc(50% - 5px); /* Account for the gap */
+}
+
+.streak-stat:nth-child(3) {
+  flex: 1;
+  width: 100%;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.streak-tip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(var(--kawaii-yellow-rgb), 0.1);
+  border: 1px dashed var(--kawaii-yellow);
+}
+
+.tip-icon {
+  font-size: 1.2rem;
+}
+
+.tip-text {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+.close-streak {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+}
+
+.close-streak:hover {
+  background-color: var(--kawaii-yellow);
+  color: white;
+}
+
+@keyframes streak-grow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes streak-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--kawaii-yellow-rgb), 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(var(--kawaii-yellow-rgb), 0.8);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .task-streaks {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .streak-panel {
+    width: 90vw;
+    max-width: 300px;
+    left: 0;
+  }
+  
+  .streak-button {
+    padding: 6px 12px;
+  }
+} 

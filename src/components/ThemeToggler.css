@@ -1,0 +1,793 @@
+.theme-toggler {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--hover-color);
+}
+
+.dropdown-icon {
+  transition: transform 0.2s ease;
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+}
+
+.theme-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.theme-option:hover {
+  background: var(--hover-color);
+}
+
+.theme-option.active {
+  background: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+}
+
+.check-icon {
+  margin-left: auto;
+  color: var(--primary-color);
+}
+
+/* Theme preview styles */
+.theme-color-preview {
+  position: absolute;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.theme-default-preview {
+  background: linear-gradient(135deg, #ff75a0, #ffa6c9);
+}
+
+.theme-dark-preview {
+  background: linear-gradient(135deg, #2a2a3c, #1e1e2e);
+}
+
+.theme-light-preview {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid #e2e8f0;
+}
+
+.theme-vibrant-preview {
+  background: linear-gradient(135deg, #7c3aed, #f43f5e);
+}
+
+.theme-cotton-candy-preview {
+  background: linear-gradient(135deg, #ffb7d9, #a6d1ff);
+}
+
+.theme-matcha-latte-preview {
+  background: linear-gradient(135deg, #c2e0a3, #f0e6d2);
+}
+
+.theme-lavender-dream-preview {
+  background: linear-gradient(135deg, #d4a5ff, #ab7be5);
+}
+
+.theme-sunset-peach-preview {
+  background: linear-gradient(135deg, #ffb347, #ffcc70);
+}
+
+.theme-preview {
+  position: absolute;
+  bottom: 110%;
+  right: 0;
+  width: 180px;
+  background: var(--container-bg);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.2s ease-out;
+  z-index: 15;
+}
+
+.preview-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: var(--bg-color);
+  border-left: 3px solid var(--kawaii-pink);
+}
+
+.preview-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--kawaii-pink);
+  border-radius: 50%;
+}
+
+.preview-text {
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.preview-button {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base theme definitions */
+
+/* Default theme - Kawaii pink */
+.theme-default {
+  --primary-color: #ff75a0;
+  --primary-color-rgb: 255, 117, 160;
+  --secondary-color: #ffa6c9;
+  --text-color: #4a4a6a;
+  --text-light: #8a8aaa;
+  --bg-color: #fff5f8;
+  --container-bg: #ffffff;
+  --border-color: #ffd6e4;
+  --hover-color: #fff0f5;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #ff9cee;
+  --kawaii-purple: #d6abff;
+  --kawaii-blue: #a7c8ff;
+  --kawaii-green: #a7ffce;
+  --kawaii-yellow: #ffde9e;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 255, 156, 238;
+  --kawaii-purple-rgb: 214, 171, 255;
+  --kawaii-blue-rgb: 167, 200, 255;
+  --kawaii-green-rgb: 167, 255, 206;
+  --kawaii-yellow-rgb: 255, 222, 158;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ff75a0, #ffa6c9);
+  --gradient-secondary: linear-gradient(135deg, #a7c8ff, #d6abff);
+  --highlight-gradient: linear-gradient(135deg, #ff75a0, #ff9cee);
+}
+
+/* Dark theme */
+.theme-dark {
+  --primary-color: #8b5cf6;
+  --primary-color-rgb: 139, 92, 246;
+  --secondary-color: #ec4899;
+  --text-color: #e2e8f0;
+  --text-light: #94a3b8;
+  --bg-color: #1e1e2e;
+  --container-bg: #2a2a3c;
+  --border-color: #383854;
+  --hover-color: #313145;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f0719b;
+  --kawaii-purple: #a78bfa;
+  --kawaii-blue: #60a5fa;
+  --kawaii-green: #5eead4;
+  --kawaii-yellow: #fcd34d;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 240, 113, 155;
+  --kawaii-purple-rgb: 167, 139, 250;
+  --kawaii-blue-rgb: 96, 165, 250;
+  --kawaii-green-rgb: 94, 234, 212;
+  --kawaii-yellow-rgb: 252, 211, 77;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  --gradient-secondary: linear-gradient(135deg, #ec4899, #be185d);
+  --highlight-gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+/* Light theme */
+.theme-light {
+  --primary-color: #3b82f6;
+  --primary-color-rgb: 59, 130, 246;
+  --secondary-color: #f97316;
+  --text-color: #334155;
+  --text-light: #64748b;
+  --bg-color: #ffffff;
+  --container-bg: #f8fafc;
+  --border-color: #e2e8f0;
+  --hover-color: #f1f5f9;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f472b6;
+  --kawaii-purple: #a78bfa;
+  --kawaii-blue: #60a5fa;
+  --kawaii-green: #34d399;
+  --kawaii-yellow: #fbbf24;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 244, 114, 182;
+  --kawaii-purple-rgb: 167, 139, 250;
+  --kawaii-blue-rgb: 96, 165, 250;
+  --kawaii-green-rgb: 52, 211, 153;
+  --kawaii-yellow-rgb: 251, 191, 36;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #3b82f6, #60a5fa);
+  --gradient-secondary: linear-gradient(135deg, #f97316, #fdba74);
+  --highlight-gradient: linear-gradient(135deg, #3b82f6, #f97316);
+}
+
+/* Vibrant theme */
+.theme-vibrant {
+  --primary-color: #7c3aed;
+  --primary-color-rgb: 124, 58, 237;
+  --secondary-color: #f43f5e;
+  --text-color: #18181b;
+  --text-light: #64748b;
+  --bg-color: #f8fafc;
+  --container-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --hover-color: #f1f5f9;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #fb7185;
+  --kawaii-purple: #8b5cf6;
+  --kawaii-blue: #38bdf8;
+  --kawaii-green: #4ade80;
+  --kawaii-yellow: #facc15;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 251, 113, 133;
+  --kawaii-purple-rgb: 139, 92, 246;
+  --kawaii-blue-rgb: 56, 189, 248;
+  --kawaii-green-rgb: 74, 222, 128;
+  --kawaii-yellow-rgb: 250, 204, 21;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #6d28d9);
+  --gradient-secondary: linear-gradient(135deg, #f43f5e, #e11d48);
+  --highlight-gradient: linear-gradient(135deg, #7c3aed, #f43f5e);
+}
+
+/* New kawaii pastel themes */
+
+/* Cotton Candy theme - pink/blue pastels */
+.theme-cotton-candy {
+  --primary-color: #ff9ad5;
+  --primary-color-rgb: 255, 154, 213;
+  --secondary-color: #a6d1ff;
+  --text-color: #4a4a6a;
+  --text-light: #8a8aaa;
+  --bg-color: #fef6fa;
+  --container-bg: #ffffff;
+  --border-color: #ffe2f1;
+  --hover-color: #fff5f9;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #ffb7d9;
+  --kawaii-purple: #cea2ff;
+  --kawaii-blue: #a6d1ff;
+  --kawaii-green: #c4ffda;
+  --kawaii-yellow: #ffe8b8;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 255, 183, 217;
+  --kawaii-purple-rgb: 206, 162, 255;
+  --kawaii-blue-rgb: 166, 209, 255;
+  --kawaii-green-rgb: 196, 255, 218;
+  --kawaii-yellow-rgb: 255, 232, 184;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ffb7d9, #ffd1e8);
+  --gradient-secondary: linear-gradient(135deg, #a6d1ff, #c4e3ff);
+  --highlight-gradient: linear-gradient(135deg, #ffb7d9, #a6d1ff);
+}
+
+/* Matcha Latte theme - soft greens/creams */
+.theme-matcha-latte {
+  --primary-color: #8fc0a9;
+  --primary-color-rgb: 143, 192, 169;
+  --secondary-color: #d8e2dc;
+  --text-color: #5f6c5f;
+  --text-light: #8a9a8a;
+  --bg-color: #f8faf6;
+  --container-bg: #ffffff;
+  --border-color: #e0ebe2;
+  --hover-color: #f3f8f4;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f9c0bb;
+  --kawaii-purple: #b8c4d9;
+  --kawaii-blue: #c2e0e8;
+  --kawaii-green: #c2e0a3;
+  --kawaii-yellow: #f0e6d2;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 249, 192, 187;
+  --kawaii-purple-rgb: 184, 196, 217;
+  --kawaii-blue-rgb: 194, 224, 232;
+  --kawaii-green-rgb: 194, 224, 163;
+  --kawaii-yellow-rgb: 240, 230, 210;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #c2e0a3, #8fc0a9);
+  --gradient-secondary: linear-gradient(135deg, #f0e6d2, #d8e2dc);
+  --highlight-gradient: linear-gradient(135deg, #c2e0a3, #f0e6d2);
+}
+
+/* Lavender Dream theme - purple/lilac tones */
+.theme-lavender-dream {
+  --primary-color: #9d8cc1;
+  --primary-color-rgb: 157, 140, 193;
+  --secondary-color: #c9a7ea;
+  --text-color: #5d4777;
+  --text-light: #8c79a9;
+  --bg-color: #f8f6ff;
+  --container-bg: #ffffff;
+  --border-color: #e8e0ff;
+  --hover-color: #f4f0ff;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #e5bbf8;
+  --kawaii-purple: #d4a5ff;
+  --kawaii-blue: #bbbbf8;
+  --kawaii-green: #c5eedc;
+  --kawaii-yellow: #f8e5bb;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 229, 187, 248;
+  --kawaii-purple-rgb: 212, 165, 255;
+  --kawaii-blue-rgb: 187, 187, 248;
+  --kawaii-green-rgb: 197, 238, 220;
+  --kawaii-yellow-rgb: 248, 229, 187;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #d4a5ff, #ab7be5);
+  --gradient-secondary: linear-gradient(135deg, #bbbbf8, #c9a7ea);
+  --highlight-gradient: linear-gradient(135deg, #d4a5ff, #e5bbf8);
+}
+
+/* Sunset Peach theme - warm oranges/yellows */
+.theme-sunset-peach {
+  --primary-color: #ff9e7d;
+  --primary-color-rgb: 255, 158, 125;
+  --secondary-color: #ffc177;
+  --text-color: #774936;
+  --text-light: #a37959;
+  --bg-color: #fff9f5;
+  --container-bg: #ffffff;
+  --border-color: #ffe8d9;
+  --hover-color: #fff5ee;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #ffb6b6;
+  --kawaii-purple: #dbb8ff;
+  --kawaii-blue: #b6d3ff;
+  --kawaii-green: #c3e6cb;
+  --kawaii-yellow: #ffdc99;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 255, 182, 182;
+  --kawaii-purple-rgb: 219, 184, 255;
+  --kawaii-blue-rgb: 182, 211, 255;
+  --kawaii-green-rgb: 195, 230, 203;
+  --kawaii-yellow-rgb: 255, 220, 153;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ffb347, #ffcc70);
+  --gradient-secondary: linear-gradient(135deg, #ffdc99, #ffc177);
+  --highlight-gradient: linear-gradient(135deg, #ff9e7d, #ffcc70);
+}
+
+/* Seasonal Themes */
+
+/* Christmas theme - red, green and snow */
+.theme-christmas {
+  --primary-color: #e53e3e;
+  --primary-color-rgb: 229, 62, 62;
+  --secondary-color: #38a169;
+  --text-color: #2d3748;
+  --text-light: #718096;
+  --bg-color: #f0f5ff;
+  --container-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --hover-color: #e6ffec;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f687b3;
+  --kawaii-purple: #b794f4;
+  --kawaii-blue: #90cdf4;
+  --kawaii-green: #9ae6b4;
+  --kawaii-yellow: #fefcbf;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 246, 135, 179;
+  --kawaii-purple-rgb: 183, 148, 244;
+  --kawaii-blue-rgb: 144, 205, 244;
+  --kawaii-green-rgb: 154, 230, 180;
+  --kawaii-yellow-rgb: 254, 252, 191;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #e53e3e, #fc8181);
+  --gradient-secondary: linear-gradient(135deg, #38a169, #9ae6b4);
+  --highlight-gradient: linear-gradient(135deg, #e53e3e, #38a169);
+}
+
+/* Halloween theme - orange and purple with dark accents */
+.theme-halloween {
+  --primary-color: #ed8936;
+  --primary-color-rgb: 237, 137, 54;
+  --secondary-color: #805ad5;
+  --text-color: #edf2f7;
+  --text-light: #cbd5e0;
+  --bg-color: #2d3748;
+  --container-bg: #1a202c;
+  --border-color: #4a5568;
+  --hover-color: #283141;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f687b3;
+  --kawaii-purple: #b794f4;
+  --kawaii-blue: #90cdf4;
+  --kawaii-green: #9ae6b4;
+  --kawaii-yellow: #fefcbf;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 246, 135, 179;
+  --kawaii-purple-rgb: 183, 148, 244;
+  --kawaii-blue-rgb: 144, 205, 244;
+  --kawaii-green-rgb: 154, 230, 180;
+  --kawaii-yellow-rgb: 254, 252, 191;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ed8936, #f6ad55);
+  --gradient-secondary: linear-gradient(135deg, #805ad5, #b794f4);
+  --highlight-gradient: linear-gradient(135deg, #ed8936, #805ad5);
+}
+
+/* Valentine's Day theme - soft reds and pinks */
+.theme-valentines {
+  --primary-color: #e53e3e;
+  --primary-color-rgb: 229, 62, 62;
+  --secondary-color: #f687b3;
+  --text-color: #4a3f43;
+  --text-light: #97858c;
+  --bg-color: #fff5f7;
+  --container-bg: #ffffff;
+  --border-color: #fed7e2;
+  --hover-color: #fff0f3;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f687b3;
+  --kawaii-purple: #d6bcfa;
+  --kawaii-blue: #bee3f8;
+  --kawaii-green: #c6f6d5;
+  --kawaii-yellow: #fefcbf;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 246, 135, 179;
+  --kawaii-purple-rgb: 214, 188, 250;
+  --kawaii-blue-rgb: 190, 227, 248;
+  --kawaii-green-rgb: 198, 246, 213;
+  --kawaii-yellow-rgb: 254, 252, 191;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #e53e3e, #fc8181);
+  --gradient-secondary: linear-gradient(135deg, #f687b3, #fed7e2);
+  --highlight-gradient: linear-gradient(135deg, #e53e3e, #f687b3);
+}
+
+/* Spring Bloom theme - fresh greens and flower colors */
+.theme-spring {
+  --primary-color: #48bb78;
+  --primary-color-rgb: 72, 187, 120;
+  --secondary-color: #f6e05e;
+  --text-color: #2f3e46;
+  --text-light: #71858d;
+  --bg-color: #f0fff4;
+  --container-bg: #ffffff;
+  --border-color: #c6f6d5;
+  --hover-color: #e6ffec;
+  
+  /* Kawaii colors */
+  --kawaii-pink: #f687b3;
+  --kawaii-purple: #b794f4;
+  --kawaii-blue: #90cdf4;
+  --kawaii-green: #9ae6b4;
+  --kawaii-yellow: #fefcbf;
+  
+  /* RGB values */
+  --kawaii-pink-rgb: 246, 135, 179;
+  --kawaii-purple-rgb: 183, 148, 244;
+  --kawaii-blue-rgb: 144, 205, 244;
+  --kawaii-green-rgb: 154, 230, 180;
+  --kawaii-yellow-rgb: 254, 252, 191;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #48bb78, #9ae6b4);
+  --gradient-secondary: linear-gradient(135deg, #f6e05e, #fefcbf);
+  --highlight-gradient: linear-gradient(135deg, #48bb78, #f6e05e);
+}
+
+/* Theme preview color swatches */
+.theme-christmas-preview {
+  background: linear-gradient(135deg, #e53e3e, #38a169);
+}
+
+.theme-halloween-preview {
+  background: linear-gradient(135deg, #ed8936, #805ad5);
+}
+
+.theme-valentines-preview {
+  background: linear-gradient(135deg, #e53e3e, #f687b3);
+}
+
+.theme-spring-preview {
+  background: linear-gradient(135deg, #48bb78, #f6e05e);
+}
+
+/* Seasonal Theme UI */
+.seasonal-banner {
+  position: absolute;
+  top: -85px;
+  right: 0;
+  width: 250px;
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+  z-index: 9;
+}
+
+.seasonal-message {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.seasonal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.seasonal-apply,
+.seasonal-dismiss {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.seasonal-apply {
+  background: var(--primary-color);
+  color: white;
+}
+
+.seasonal-dismiss {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+}
+
+.seasonal-apply:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.seasonal-dismiss:hover {
+  background: var(--hover-color);
+}
+
+.seasonal-option {
+  position: relative;
+  overflow: hidden;
+}
+
+.seasonal-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--primary-color-rgb), 0.05) 100%);
+  pointer-events: none;
+}
+
+.seasonal-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 8px 3px 6px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: middle;
+  box-shadow: 0 2px 4px rgba(var(--primary-color-rgb), 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  transform: rotate(-2deg);
+  animation: float 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.03em;
+}
+
+.seasonal-badge::before {
+  content: '✨';
+  font-size: 0.75rem;
+  margin-right: 3px;
+  animation: twinkle 1.5s ease-in-out infinite alternate;
+}
+
+.seasonal-badge::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-2deg) translateY(-2px) scale(1.02);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20%, 100% {
+    left: 100%;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+}
+
+/* Customize badge for each seasonal theme */
+.theme-christmas .seasonal-badge {
+  background: linear-gradient(135deg, #e53e3e, #38a169);
+  box-shadow: 0 2px 4px rgba(229, 62, 62, 0.4), 0 0 10px rgba(56, 161, 105, 0.2);
+}
+
+.theme-christmas .seasonal-badge::before {
+  content: '❄️';
+}
+
+.theme-halloween .seasonal-badge {
+  background: linear-gradient(135deg, #ed8936, #805ad5);
+  box-shadow: 0 2px 4px rgba(237, 137, 54, 0.4), 0 0 10px rgba(128, 90, 213, 0.2);
+}
+
+.theme-halloween .seasonal-badge::before {
+  content: '👻';
+}
+
+.theme-valentines .seasonal-badge {
+  background: linear-gradient(135deg, #e53e3e, #f687b3);
+  box-shadow: 0 2px 4px rgba(229, 62, 62, 0.4), 0 0 10px rgba(246, 135, 179, 0.2);
+}
+
+.theme-valentines .seasonal-badge::before {
+  content: '💖';
+}
+
+.theme-spring .seasonal-badge {
+  background: linear-gradient(135deg, #48bb78, #f6e05e);
+  box-shadow: 0 2px 4px rgba(72, 187, 120, 0.4), 0 0 10px rgba(246, 224, 94, 0.2);
+}
+
+.theme-spring .seasonal-badge::before {
+  content: '🌱';
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

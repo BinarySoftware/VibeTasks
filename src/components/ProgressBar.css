@@ -1,0 +1,174 @@
+.progress-container {
+  margin: 20px 0;
+  position: relative;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.progress-percentage {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.progress-bar-container {
+  height: 24px;
+  background-color: var(--bg-color);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--kawaii-pink), var(--kawaii-purple));
+  border-radius: 30px;
+  transition: width 0.5s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  min-width: 24px;
+}
+
+.progress-bar.animate {
+  animation: progress-pulse 1.5s ease;
+}
+
+.progress-emoji {
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  animation: bounce-in 0.5s ease;
+}
+
+.milestone-notification {
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 16px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+  border: 2px solid var(--kawaii-pink);
+  animation: pop-in 0.5s ease-out, float 2s 0.5s ease-in-out infinite;
+}
+
+.milestone-notification:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-right: 2px solid var(--kawaii-pink);
+  border-bottom: 2px solid var(--kawaii-pink);
+}
+
+.milestone-emoji {
+  font-size: 1.5rem;
+  animation: spin 2s linear infinite;
+}
+
+.milestone-message {
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+@keyframes progress-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--kawaii-pink-rgb), 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(var(--kawaii-pink-rgb), 0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -8px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .progress-container {
+    margin: 15px 0;
+  }
+  
+  .milestone-notification {
+    width: 90%;
+    top: -70px;
+    font-size: 0.85rem;
+  }
+} 

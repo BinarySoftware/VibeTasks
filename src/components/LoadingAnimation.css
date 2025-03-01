@@ -1,0 +1,155 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.loading-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.loading-message {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+.loading-star {
+  font-size: 2rem;
+  animation: pulse-and-rotate 1.2s infinite ease-in-out;
+  color: var(--kawaii-blue);
+  margin: 0 8px;
+  line-height: 1;
+}
+
+.loading-star:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading-star:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.loading-star:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.loading-pink .loading-star {
+  color: var(--kawaii-pink);
+}
+
+.loading-purple .loading-star {
+  color: var(--kawaii-purple);
+}
+
+.loading-green .loading-star {
+  color: var(--kawaii-green);
+}
+
+.loading-blue .loading-star {
+  color: var(--kawaii-blue);
+}
+
+/* Size variations */
+.loading-small .loading-star {
+  font-size: 1.2rem;
+  margin: 0 4px;
+}
+
+.loading-small .loading-message {
+  font-size: 0.8rem;
+}
+
+.loading-large .loading-star {
+  font-size: 3rem;
+  margin: 0 12px;
+}
+
+.loading-large .loading-message {
+  font-size: 1.2rem;
+}
+
+@keyframes pulse-and-rotate {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) rotate(360deg);
+    opacity: 0.5;
+  }
+}
+
+/* Inline loading for use in buttons */
+.loading-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+.loading-inline .loading-star {
+  font-size: 1rem;
+  margin: 0 3px;
+}
+
+/* Overlay for full-screen loading */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-overlay .loading-container {
+  background-color: var(--container-bg);
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .loading-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Additional loading animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 

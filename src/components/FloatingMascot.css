@@ -1,0 +1,207 @@
+.floating-mascot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.floating-mascot.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-mascot .mascot-face {
+  text-wrap: nowrap;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: mascot-bounce 3s ease-in-out infinite;
+  border: 3px solid var(--kawaii-pink);
+  user-select: none;
+}
+
+.floating-mascot .mascot-face:hover {
+  transform: scale(1.1);
+}
+
+.mascot-bubble {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background-color: white;
+  padding: 12px 20px;
+  border-radius: 18px;
+  min-width: 200px;
+  max-width: 250px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  border: 2px solid var(--kawaii-pink);
+}
+
+.mascot-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 25px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-right: 2px solid var(--kawaii-pink);
+  border-bottom: 2px solid var(--kawaii-pink);
+  transform: rotate(45deg);
+}
+
+.mascot-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+@keyframes mascot-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.mascot-menu {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  background-color: white;
+  border-radius: 18px;
+  min-width: 240px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  z-index: 20;
+  border: 2px solid var(--kawaii-pink);
+  animation: fadeInScale 0.3s ease-out;
+  transform-origin: bottom right;
+}
+
+.mascot-menu-title {
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.mascot-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mascot-option {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mascot-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--kawaii-pink);
+}
+
+.mascot-option.active {
+  background-color: rgba(var(--kawaii-pink-rgb), 0.1);
+  border-color: var(--kawaii-pink);
+}
+
+.mascot-option-face {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.mascot-option-name {
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.mascot-menu-close {
+  width: 100%;
+  padding: 8px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.mascot-menu-close:hover {
+  background-color: var(--kawaii-pink);
+  color: white;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-mascot {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .floating-mascot .mascot-face {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .mascot-bubble {
+    min-width: 150px;
+    max-width: 200px;
+    font-size: 0.85rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mascot-menu {
+    width: 85vw;
+    right: 10px;
+    bottom: 70px;
+  }
+  
+  .mascot-options {
+    grid-template-columns: 1fr;
+  }
+} 

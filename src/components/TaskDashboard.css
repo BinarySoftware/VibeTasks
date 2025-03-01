@@ -1,0 +1,248 @@
+.dashboard-container {
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  background-color: var(--container-bg);
+  box-shadow: var(--box-shadow);
+  animation: slideUp 0.5s ease;
+}
+
+.dashboard-title {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-align: center;
+  background: var(--highlight-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: var(--text-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Completion Rate Circle */
+.completion-rate {
+  position: relative;
+}
+
+.stat-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 1.5s ease-out;
+}
+
+.stat-circle::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: var(--container-bg);
+}
+
+.stat-circle .stat-value {
+  position: relative;
+  z-index: 2;
+}
+
+/* Streak Card */
+.streak .stat-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.large-number {
+  font-size: 2.5rem;
+  color: #ff9500;
+}
+
+.fire-emoji {
+  font-size: 1.8rem;
+  animation: flame 1s infinite alternate;
+}
+
+/* Tasks Count Card */
+.tasks-count {
+  background: linear-gradient(135deg, var(--bg-color), var(--container-bg));
+}
+
+.split-stat {
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+}
+
+.stat-item .stat-label {
+  margin: 0;
+  margin-top: 4px;
+}
+
+.active-count {
+  color: var(--primary-color);
+}
+
+.completed-count {
+  color: var(--success-color);
+}
+
+/* Priority Distribution */
+.priority-bars {
+  margin-top: 15px;
+}
+
+.priority-bar-container {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.priority-bar {
+  height: 12px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: width 1s ease;
+}
+
+.priority-bar.high-priority {
+  background-color: #f44336;
+}
+
+.priority-bar.medium-priority {
+  background-color: #ffc107;
+}
+
+.priority-bar.low-priority {
+  background-color: #4caf50;
+}
+
+.priority-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* Productivity Tips */
+.tip-card {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  border-left: 4px solid var(--primary-color);
+  margin-bottom: 15px;
+  font-style: italic;
+  animation: pulse 5s infinite alternate;
+}
+
+.tip-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* Animations */
+@keyframes spin {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes flame {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.1);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .large-number {
+    font-size: 2rem;
+  }
+} 

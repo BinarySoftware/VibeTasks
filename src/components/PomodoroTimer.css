@@ -1,0 +1,266 @@
+.pomodoro-container {
+  padding: 20px;
+  border-radius: 12px;
+  background-color: var(--container-bg);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: background-color 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pomodoro-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  transition: background 0.5s ease;
+}
+
+.pomodoro-container.pomodoro::before {
+  background: linear-gradient(to right, #ff5e3a, #ff2a68);
+}
+
+.pomodoro-container.shortBreak::before {
+  background: linear-gradient(to right, #2ecc71, #1abc9c);
+}
+
+.pomodoro-container.longBreak::before {
+  background: linear-gradient(to right, #3498db, #2980b9);
+}
+
+/* Tab buttons */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background-color: var(--border-color);
+}
+
+.tab-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.pomodoro .tab-button.active {
+  background-color: #ff5e3a;
+}
+
+.shortBreak .tab-button.active {
+  background-color: #2ecc71;
+}
+
+.longBreak .tab-button.active {
+  background-color: #3498db;
+}
+
+/* Timer display */
+.timer-display {
+  margin: 30px 0;
+  position: relative;
+}
+
+.time-remaining {
+  font-size: 6rem;
+  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  transition: color 0.5s ease;
+}
+
+.pomodoro .time-remaining {
+  color: #ff5e3a;
+}
+
+.shortBreak .time-remaining {
+  color: #2ecc71;
+}
+
+.longBreak .time-remaining {
+  color: #3498db;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: var(--border-color);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.progress-indicator {
+  height: 100%;
+  transition: width 1s linear;
+}
+
+.pomodoro .progress-indicator {
+  background-color: #ff5e3a;
+}
+
+.shortBreak .progress-indicator {
+  background-color: #2ecc71;
+}
+
+.longBreak .progress-indicator {
+  background-color: #3498db;
+}
+
+.end-time {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Timer controls */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.control-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pomodoro .control-button.start {
+  background-color: #ff5e3a;
+  color: white;
+}
+
+.shortBreak .control-button.start {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.longBreak .control-button.start {
+  background-color: #3498db;
+  color: white;
+}
+
+.control-button.pause {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.control-button.reset {
+  background-color: var(--bg-color);
+  color: var(--text-light);
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.control-button:active {
+  transform: translateY(0);
+}
+
+/* Pomodoro stats */
+.pomodoro-stats {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.pomodoro-count {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+}
+
+.timer-status {
+  font-style: italic;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: pulse 2s infinite;
+}
+
+.timer-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+}
+
+.pomodoro .timer-status::before {
+  background-color: #ff5e3a;
+}
+
+.shortBreak .timer-status::before {
+  background-color: #2ecc71;
+}
+
+.longBreak .timer-status::before {
+  background-color: #3498db;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .time-remaining {
+    font-size: 4rem;
+  }
+  
+  .tab-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .control-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+} 
